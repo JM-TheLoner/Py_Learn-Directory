@@ -1,0 +1,66 @@
+import openpyxl as xl
+
+from openpyxl.styles import Font
+
+Master_workbook = xl.load_workbook("excel files\master_sheet.xlsx") 
+
+the most important command here is wb.save("filename{new or same}"). this saves the changes you made to the excel workbook. after all changes put this to save important
+close the excel file before saving
+
+wb = workbook
+
+ws = worksheet
+
+to create a new sheet use wb.create_sheet("sheetname", index). index is not necessary. its default is -1
+
+ws["a1"] or ws.cell(1, 1){row, column} or ws.cell(row=int, column=int) --- returns same thing..... this line is just for demonstrations
+if cell[a1:b2] it is from a1 to b2 and (to print it use a for loop with 2 args)
+if row or colums is left unassigned it takes all of them
+
+cell.value - returns the data in the file
+
+ws.max_row - number of rows
+
+ws.max_column - number of columns
+
+ws.rows - returns all the rows as a tuples
+
+ws.columns - returns all columns as a tuple
+
+
+ws.iter_row(min_row=a, max_row=a, min_col=a, max_col=a) - iterates over specified cells in a tuple for each row 
+(a = int)  (to print it use a for loop with 2 args)  (min_row and min_col are 1 as default) (max_row and max_col are -1 as default)
+
+ws.iter_cols(min_row=a, max_row=a, min_col=a, max_col=a) iterates over specified cells in a tuple for each colums
+(a = int)  (to print it use a for loop with 2 args)  (min_row and min_col are 1 as default)   (max_row and max_col are -1 as default)
+
+to mess with font and color and the likes use "from openpyxl.styles import Font, Color"
+color requires a hexcode. obtainable at html color codes chart
+if you want to underline you must specify the type of underline as such underline = 'preferred_type'
+preffered_type is either: 'double'; 'singleAccounting'; 'doubleAccounting'; 'single'
+use cell_name.font = designed_font to apply it (designed_font is the variable used to store the font)
+
+for patternfill from openpyxl.styles import PatternFill
+PatternFill(patternType='type', fgColor='hex_code')
+type can either be lightup, gray125, darkHorizontal, lightGray, lightHorizontal, mediumGray, lightVertical, darkTrellis, solid, darkUp, darkVertical, lightTrellis, gray0652, darkDown, darkGray, darkGrid, lightDown, lightGrid
+
+to apply borders from openpyxl.styles import Border, Side
+a = side(border_style = 'style', color = 'hex_code')
+Border(top=a)    [make as many sides as you want and then assign them in border]
+
+to change the format of a cell from openpyxl.styles import numbers
+ws['cell'].number_format = numbers_FORMAT.XXXXX     (xxxxx is the required format)
+
+to automate formulas
+ws['Target_cell'] = '=ABC(cells)'
+Target_cell is where the result should be
+ABC is the formula [SUM, AVERAGE, PRODUCT, ETC.]
+cells is cells involved in the formula              
+
+to create a new file
+new_name = openpyxl.Workbook()
+ws = new_name.active
+
+to remove characters use the .strip() function
+ie. names = names.cell(row=row_count, column=column_count).value
+    names.strip('character')   {character to remove}

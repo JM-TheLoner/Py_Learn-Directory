@@ -1,0 +1,13 @@
+got to pypi.org to download other packages that are not in python inbuilt packages
+not all packages are perfect though
+
+how to download
+1. go to pypi.org
+2. search for the desired function
+3. click the desired version
+4. there is a command on the top right of the website for you to type into the terminal window
+5. the program is installed
+
+ 
+
+\    
